@@ -5,10 +5,20 @@ using System.Web;
 using System.Data.Entity;
 
 namespace INT422TestOne.Models {
+  //===============================================================================
+  // Initializer: populate the tables with initial data
+  //===============================================================================
   public class Initiallizer : DropCreateDatabaseAlways<DataContext> {
+
     protected override void Seed(DataContext dc) {
+      //===============================================================================
+      // INSERT INTO Genre (Name) VALUES ('Fantasy');
+      //===============================================================================
       Genre g = new Genre("Fantasy");
       dc.Genres.Add(g);
+      //===============================================================================
+      // INSERT INTO Genre (Name) VALUES ('Drama');
+      //===============================================================================
       Genre g1 = new Genre("Drama");
       dc.Genres.Add(g1);
       Genre g2 = new Genre("Comedy");
@@ -20,8 +30,16 @@ namespace INT422TestOne.Models {
       Genre g5 = new Genre("Crime");
       dc.Genres.Add(g5);
 
+      //===============================================================================
+      // INSERT INTO Director (Name) VALUES ('Goldwyn');
+      //===============================================================================
       Director d = new Director("Goldwyn");
       dc.Directors.Add(d);
+
+      //===============================================================================
+      // INSERT INTO Movie (Title, TicketPrice, Director, Genres) 
+      // VALUES ('Darkfall Resurection', '15.99', $d, $g);
+      //===============================================================================
       Movie mo = new Movie();
       mo.Title = "Darkfall Resurection";
       mo.TicketPrice = 15.99m;
@@ -29,6 +47,7 @@ namespace INT422TestOne.Models {
       mo.Genres.Add(g);
       mo.Genres.Add(g1);
       dc.Movies.Add(mo);
+
       mo = null;
       d = null;
 
